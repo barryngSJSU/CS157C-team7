@@ -19,7 +19,9 @@
 				var cell3 = row3.insertCell(0);
 				var row4 = table.insertRow(-1);
 				var cell4 = row4.insertCell(0);
-			
+				var row5 = table.insertRow(-1);
+				var cell5 = row5.insertCell(0);
+				
 				var titleInput = document.createElement("INPUT");
 				titleInput.id = "title";
 				var descriptionInput = document.createElement("INPUT");
@@ -28,6 +30,27 @@
 				priceInput.setAttribute("type", "number");
 				priceInput.setAttribute("min", "0");
 				priceInput.id = "price"
+				var imageInput = document.createElement("INPUT");
+				imageInput.setAttribute("type", "file");
+				imageInput.setAttribute("accept", "image/*");
+				imageInput.id = "image";
+				
+				var hiddenInput = document.createElement("INPUT");
+				hiddenInput.setAttribute("type", "hidden");
+				hiddenInput.id = "nice";
+			
+				
+				imageInput.addEventListener('change', function() {
+					 var file = this.files[0];
+					    var reader = new FileReader();
+					    reader.onload = function(e) {
+					    	hiddenInput.value = e.target.result;
+					    	//alert(hiddenInput.value);
+					    }
+					    reader.readAsDataURL(file);
+					}, false);
+				
+				
 				var button = document.createElement('BUTTON');
 				
 				
@@ -37,12 +60,17 @@
 				cell2.appendChild(descriptionInput);
 				cell3.innerHTML = "Price:"
 				cell3.appendChild(priceInput);
+				cell4.innerHTML = "Select image:"
+				cell4.appendChild(imageInput);
+				cell4.append(hiddenInput);
+				
 				
 				button.onclick = function(){
 					var formData = new FormData();
 					formData.append("title",  document.getElementById("title").value);
 					formData.append("description",  document.getElementById("description").value);
 					formData.append("price",  document.getElementById("price").value);
+					formData.append("image",  document.getElementById("nice").value);
 					var xhr = new XMLHttpRequest();
 		        	xhr.open('POST', "/listing/create", true);
 		        	xhr.send(formData);
@@ -52,7 +80,7 @@
 				var text = document.createTextNode("Create Listing");
 				button.appendChild(text);
 				
-				cell4.appendChild(button);
+				cell5.appendChild(button);
 				
 			</script>
 		</table>

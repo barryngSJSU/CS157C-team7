@@ -26,13 +26,16 @@ public class RestfulController {
 	}
 	
 	@PostMapping("/listing/create")
-	public Map<String, String> createListing(@RequestParam("title") String title, @RequestParam("description") String description, @RequestParam("price") String price) {
+	public Map<String, String> createListing(@RequestParam("title") String title, @RequestParam("description") String description, @RequestParam("price") String price, @RequestParam("image") String image) {
 		Map<String, String> hash = new HashMap<String, String>();
 		hash.put("Description", description);
-		hash.put("price", price);
+		hash.put("Price", price);
+		hash.put("Image", image);
 		jedis.hset(title, "Description", description);
 		jedis.hset(title, "Price", price);
+		jedis.hset(title, "Image", image);
 		jedis.rpush("listings", title);
+		jedis.save();
 		return hash;
 	}
 	
