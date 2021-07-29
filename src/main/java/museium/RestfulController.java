@@ -1,4 +1,6 @@
 package museium;
+import org.springframework.security.core.parameters.P;
+import org.springframework.web.bind.annotation.*;
 import redis.clients.jedis.Jedis;
 
 import java.security.Principal;
@@ -12,16 +14,6 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
@@ -178,4 +170,26 @@ public class RestfulController {
 		jedis.del(title);
 		jedis.save();
     }
+
+    @PostMapping("/cart/create{title}&{user}")
+	public void addToCart(@PathVariable String title, @PathVariable String user){
+		jedis.sadd("cart:" + user, title);
+	}
+
+	@PutMapping("/checkout{user}")
+	public void checkOut(@PathVariable String user){
+		jedis.smembers("cart:" + user);
+		Set<String> cart = jedis.smembers("cart:" + user);
+		for (String s:cart) {
+			jedis.sadd("purchases:" + user,s );
+			jedis.lrem("listings", 0,s );
+			jedis.lrem("listings:" + user, 0, s);
+			List<String> tags = jedis.lrange("tags:" + s, 0, -1);
+			for (String t: tags) {
+				jedis.zrem("tag:" + t, s);
+			}
+		}
+		jedis.del("cart:" + user);
+	}
+
 }
