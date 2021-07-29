@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<div class="wrapper fadeInDown">
+<head>
+    <title>Sign Up</title>
+    <link href="css/style.css" rel="stylesheet">
+	<script src="script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+     <div id="formContent">
+        <div>
+        	<a href="/" style="margin-left:10px">Homepage </a>
+            <h1>Sign Up</h1>
+        </div>
+        <div th:if="${param.error}">
+        Invalid Email.
+    	</div>
+        <form th:action="@{/register}" th:object="${customer}" method="post">
+            <input type="text" id="email" th:field="*{email}" class="fadeIn second" name="email" placeholder="Email" required />
+            <input type="password" id="password" th:field="*{password}" class="fadeIn third" name="password" placeholder="Password" required minlength="6" maxlength="10"/>
+            <input type="text" id="firstName" th:field="*{firstName}" class="fadeIn third" name="firstName" placeholder="First Name" required />
+            <input type="text" id="lastName" th:field="*{lastName}" class="fadeIn third" name="lastName" placeholder="Last Name" required />
+            <input type="text" id="phone" th:field="*{phone}" class="fadeIn third" name="phone" placeholder="Phone Number" required />
+            <input type="text" id="address" th:field="*{address}" class="fadeIn third" name="address" placeholder="Address" required />
+            <input type="submit" id="submit" class="fadeIn fourth" value="Sign Up">
+        </form>
+    </div>
+</body>
+</div>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script.js"></script>
+    <title>Listings</title>
+</head>
+<body>
+<a href="/">Home</a>
+<h1>Seller</h1>
+<div class = "sellerContainer">
+	<table id ="sellerTable">
+		<script>
+			var user = window.location.href.substring(window.location.href.indexOf("?") + 1)
+			var userData = getSeller(user);
+			var table = document.getElementById("sellerTable");
+			
+			var row = table.insertRow(-1);
+			var cell = row.insertCell(0);
+			var row2 = table.insertRow(-1);
+			var cell2 = row2.insertCell(0);
+			var row3 = table.insertRow(-1);
+			var cell3 = row3.insertCell(0);
+			
+				
+			row.innerHTML = "User: " + userData.firstName + " " +  userData.lastName;
+			row2.innerHTML = "Rating: " + userData.Rating;
+			row3.innerHTML = "User Reviews: ";
+			var reviews = getReviews(userData.email);
+			for (let i = 0; i < reviews.length; i++){
+				var review = getReview(reviews[i]);
+				var revRow = table.insertRow(-1);
+				var revCell = revRow.insertCell(0);
+				var revRow2 = table.insertRow(-1);
+				var revCell2 = revRow2.insertCell(0);
+				var revRow3 = table.insertRow(-1);
+				var revCell3 = revRow3.insertCell(0);
+				var revRow4 = table.insertRow(-1);
+				var revCell4 = revRow4.insertCell(0);
+				
+				revCell.innerHTML = reviews[i];
+				revCell2.innerHTML = "User: " + getFullName(review.ReviewerEmail);
+				revCell3.innerHTML = review.ReviewBody;
+				revCell4.innerHTML = "Rating: " + review.Rating;
+				
+			}
+			if (getCurrentUser() != "no user"){
+			
+				var row4 = table.insertRow(-1);
+				var cell4 = row4.insertCell(0);
+				var row5 = table.insertRow(-1);
+				var cell5 = row5.insertCell(0);
+				var row6 = table.insertRow(-1);
+				var cell6 = row6.insertCell(0);
+				var row7 = table.insertRow(-1);
+				var cell7 = row7.insertCell(0);
+				var row8= table.insertRow(-1);
+				var cell8 = row8.insertCell(0);
+				
+				row4.innerHTML = "Write a review: ";
+				var titleInput = document.createElement("INPUT");
+				titleInput.id = "title";
+				var bodyInput = document.createElement("INPUT");
+				bodyInput.id = "body";
+				var ratingInput = document.createElement("INPUT");
+				ratingInput.setAttribute("type", "range");
+				ratingInput.setAttribute("min", "0");
+				ratingInput.setAttribute("max", "5");
+				ratingInput.id = "rating"
+				
+				var hiddenInput = document.createElement("INPUT");
+				hiddenInput.setAttribute("type", "hidden");
+				hiddenInput.id = "hiddenInput";
+				hiddenInput.value = userData.email;
+				
+				var hiddenInput2 = document.createElement("INPUT");
+				hiddenInput2.setAttribute("type", "hidden");
+				hiddenInput2.id = "hiddenInput2";
+				hiddenInput2.value = getCurrentUser();
+				
+				cell5.innerHTML = "Review Title: ";
+				cell5.append(titleInput);
+				cell6.innerHTML = "Review Body: ";
+				cell6.append(bodyInput);
+				cell7.innerHTML = "Rating (0-5): ";
+				cell7.append(ratingInput);
+				cell7.append(hiddenInput);
+				cell7.append(hiddenInput2);
+				
+				var button = document.createElement('BUTTON');
+				button.onclick = function(){
+					var formData = new FormData();
+					formData.append("title",  document.getElementById("title").value);
+					formData.append("rating",  document.getElementById("rating").value);
+					formData.append("reviewBody",  document.getElementById("body").value);
+					formData.append("email",  document.getElementById("hiddenInput").value);
+					formData.append("reviewerEmail",  document.getElementById("hiddenInput2").value);
+					var xhr = new XMLHttpRequest();
+		        	xhr.open('POST', "/review/create", true);
+		        	xhr.send(formData);
+		        	alert("Created Review!");
+		        	window.location = window.location.href;
+				}
+				var text = document.createTextNode("Create Review");
+				button.appendChild(text);
+				cell8.append(button);
+			}
+			
+		</script>
+	</table>
+</div>
+</body>
+</html>

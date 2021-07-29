@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script.js"></script>
+    <title>Listings</title>
+</head>
+<body>
+<a href="/">Home</a>
+<h1>Listings</h1>
+
+
+<div class = "listingsContainer">
+	<table id ="listingsTable">
+		<script>
+			var table = document.getElementById("listingsTable");
+			var searchBar = table.insertRow(-1);
+			var serachBarCell = searchBar.insertCell(-1);
+			var searchInput = document.createElement("INPUT");
+			searchInput.id = "searchInput";
+			var button = document.createElement('BUTTON');
+			var text = document.createTextNode("Search by tag");
+			button.appendChild(text);
+			button.onclick = function(){
+				window.location = "/listings?" + document.getElementById("searchInput").value;
+			}
+			
+			serachBarCell.append(searchInput);
+			serachBarCell.append(button);
+			
+			var listings = getListings();
+			var tag = window.location.href.substring(window.location.href.indexOf("?") + 1)
+			if (tag != ""){
+				listings = search(tag);
+			}
+			for (let i = 0; i < listings.length; i++){
+				var title = listings[i];
+				var listing = getListing(title);
+				var seller = getFullName(listing.Email);
+				
+				var row = table.insertRow(-1);
+				var cell1 = row.insertCell(-1);
+				var cell2 = row.insertCell(-1);
+				var cell3 = row.insertCell(-1);
+				var cell4 = row.insertCell(-1);
+				var cell5 = row.insertCell(-1);
+				
+				cell1.innerHTML = 'Title: <a href="/listing?'+ title +'">'+title+'</a>';
+				cell2.innerHTML = "Description: " + listing.Description;
+				cell3.innerHTML = "Price: " + listing.Price;
+				var image = new Image(200);
+				image.src = listing.Image;
+				cell4.appendChild(image);
+				cell5.innerHTML = 'Seller: <a href="/seller?'+ listing.Email +'">'+seller+'</a>\nRating: ' + getSeller(listing.Email).Rating;
+			}
+		</script>
+	</table>
+</div>
+</body>
+</html>
