@@ -499,11 +499,16 @@ background-color: #2B333D;
 /* Checkout
 --------------------------------------*/
 .container {
-  background-color: #FFFFFF;
+  background-color: #292929;
   padding: 3px 18px 13px 18px;
   border: 1px solid lightgrey;
   border-radius: 3px;
   box-shadow: 0 0 2rem 0 rgba(168, 180, 194, 0.37);
+  color: #D9D9D9;
+}
+.Checkout_Body{
+  background-color: #1E1E1E;
+  color: #D9D9D9;
 }
 
 
