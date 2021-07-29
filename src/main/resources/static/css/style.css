@@ -131,24 +131,24 @@ input[type="submit"]:active {
 /* Seller Login
 --------------------------------------*/
 .Seller_Sign_up_Page{
-  background-image: url(../Images/Seller_Login.jpg);
+  background-image: url(../Images/ListingBG.jpg);
 
 }
 .Seller_Login_Page{
-  background-image: url(../Images/Seller_Signup.jpg);
+  background-image: url(../Images/ListingBG.jpg);
   background-size: cover;
   height: 100%;
   overflow: hidden;
 
 }
 .Buyer_Login_Page{
-  background-image: url(../Images/BuyerLogin.jpg);
+  background-image: url(../Images/ListingBG.jpg);
   background-size: cover;
   height: 100%;
   overflow: hidden;
 }
 .Buyer_Sign_up_Page{
-  background-image: url(../Images/Buyersignup.jpg);
+  background-image: url(../Images/ListingBG.jpg);
   background-size: cover;
   height: 100%;
   overflow: hidden;
@@ -362,7 +362,7 @@ transition: 0.1s ease;
 }
 
 .Seller_Dash{
-  background-image: url(../Images/Seller_Dash.jpg);
+  background-image: url(../Images/ListingBG.jpg);
   background-size: cover;
   height: 100%;
   overflow: hidden;
@@ -372,7 +372,7 @@ transition: 0.1s ease;
 /* Create Listing
 --------------------------------------*/
 .Create_Listing{
-  background-image: url(../Images/Create_Listing.jpg);
+  background-image: url(../Images/ListingBG.jpg);
 }
 .title_descrip{
   color: antiquewhite;
@@ -445,5 +445,15 @@ th,td {
   color: #D9D9D9;
 }
 
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 200px; /* 200px width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #ffffff; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px; /* Place content 20px from the top */
 
-
+}

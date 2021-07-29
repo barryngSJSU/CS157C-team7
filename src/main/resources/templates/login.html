@@ -1,0 +1,34 @@
+<div class="wrapper fadeInDown">
+<head>
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body class = "Seller_Login_Page">
+<main>
+  <!-- Title for page-->
+  <div class = "content">
+  <header>
+    <div class = "content-wrap">
+    </div>
+  </header>
+  <div id="formContent">
+    <div>
+    <a href="/">Homepage </a>
+    <h1>Log In</h1>
+    
+    <!-- Login Form -->
+    <div th:if="${param.error}">
+    	Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <form th:action="@{/login}" method="post">
+      <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+      <input type="submit" id = "submit" name="submit" value="Log In">
+    </form>
+  </div>
+  </div>
+  </main>
+  </body>
+</div>

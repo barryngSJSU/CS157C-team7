@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script.js"></script>
+    <title>Listings</title>
+</head>
+<body class="Listing_Body">
+<div class="sidenav">
+	<a href="/">Homepage</a>
+	<br>
+	<a href="/create">Create</a>
+	<br>
+	<a href="/listings?">Listings</a>
+	<br>
+	<a href="/cart">Cart</a>
+	<br>
+	<div id = "signup">
+		<a href="/login">Sign in</a>
+		<br>
+		<a href="/signup">Sign up</a>
+	</div>
+	<div id = "logout" style="display: none">		
+		<a href="/profile" class="account">Profile</a>
+		<br>
+		<a href="/logout" form = "succ" class="account">Log out</a>
+	</div>
+	<script>
+	var list = getCurrentUser();
+	if(list != "no user"){
+		document.getElementById('logout').style.display= 'block';
+		document.getElementById('signup').style.display= 'none';
+	}
+	</script>
+</div>
+<section class="product">
+<div class="p-heading">
+	<h1>Featured Art</h1>
+</div>
+<div class = "product-container">
+	<table id ="listingsTable">
+		<script>
+			var table = document.getElementById("listingsTable");
+			var searchBar = table.insertRow(-1);
+			var serachBarCell = searchBar.insertCell(-1);
+			var searchInput = document.createElement("INPUT");
+			searchInput.id = "searchInput";
+			
+			var button = document.createElement('BUTTON');
+			var text = document.createTextNode("Search by tag");
+			button.appendChild(text);
+			button.onclick = function(){
+				window.location = "/listings?" + document.getElementById("searchInput").value;
+			}
+			
+			var button2 = document.createElement('BUTTON');
+			var text2 = document.createTextNode("All listings");
+			button2.appendChild(text2);
+			button2.onclick = function(){
+				window.location = "/listings?";
+			}
+			
+			var tag = window.location.href.substring(window.location.href.indexOf("?") + 1)
+			if (tag != ""){
+				var cell2 = searchBar.insertCell(-1);
+				cell2.appendChild(button2);
+			}
+			serachBarCell.append(searchInput);
+			serachBarCell.append(button);
+		</script>
+		<tr>
+         	<th>Title</th>
+         	<th>Description</th>
+          	<th>Price</th> 
+          	<th>Image</th>
+          	<th>Seller</th>
+          	<th>Rating</th>
+        </tr>
+		<script>
+			var listings = getListings();
+			var tag = window.location.href.substring(window.location.href.indexOf("?") + 1)
+			if (tag != ""){
+				listings = search(tag);
+			}
+			
+			for (let i = 0; i < listings.length; i++){
+				const title = listings[i];
+				var listing = getListing(title);
+				var seller = getFullName(listing.Email);
+				
+				var row = table.insertRow(-1);
+				var cell1 = row.insertCell(-1);
+				var cell2 = row.insertCell(-1);
+				var cell3 = row.insertCell(-1);
+				var cell4 = row.insertCell(-1);
+				var cell5 = row.insertCell(-1);
+				var cell6 = row.insertCell(-1);
+				
+				cell1.innerHTML = '<a href="/listing?'+ title +'" style="color:#ffffff">'+title+'</a>';
+				cell2.innerHTML = listing.Description;
+				cell3.innerHTML = "$" + listing.Price;
+				var image = new Image(200);
+				image.src = listing.Image;
+				cell4.appendChild(image);
+				cell5.innerHTML = '<a href="/seller?'+ listing.Email +'" style="color:#ffffff">'+seller+'</a>';
+				cell6.innerHTML = getSeller(listing.Email).Rating;
+				
+				if(getCurrentUser() != "no user"){
+					var cell7 = row.insertCell(-1);
+					var button = document.createElement('BUTTON');
+					button.onclick = function (){
+						const http = new XMLHttpRequest();
+						http.open("POST", "/cart/create"+ title, false);
+						http.send();
+						alert("Added to Cart!");
+					}
+					
+					var text = document.createTextNode("Add to Cart");
+					button.appendChild(text);
+					button.className = "buttons";
+					cell7.appendChild(button);
+				}
+			}
+		</script>
+	</table>
+</div>
+</body>
+</html>

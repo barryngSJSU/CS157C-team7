@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script.js"></script>
+    <title>Create Listing</title>
+</head>
+<body class="Listing_Body">
+<div class="sidenav">
+	<a href="/">Homepage</a>
+	<br>
+	<a href="/create">Create</a>
+	<br>
+	<a href="/listings?">Listings</a>
+	<br>
+	<a href="/cart">Cart</a>
+	<br>
+	<div id = "signup">
+		<a href="/login">Sign in</a>
+		<br>
+		<a href="/signup">Sign up</a>
+	</div>
+	<div id = "logout" style="display: none">		
+		<a href="/profile" class="account">Profile</a>
+		<br>
+		<a href="/logout" form = "succ" class="account">Log out</a>
+	</div>
+	<script>
+	var list = getCurrentUser();
+	if(list != "no user"){
+		document.getElementById('logout').style.display= 'block';
+		document.getElementById('signup').style.display= 'none';
+	}
+	</script>
+</div>
+<section class="product">
+<div class="p-heading">
+	<h1>Create Listing</h1>
+</div>
+	<div class = "product-container">
+		<table id ="listingTable">
+			<script>
+				var table = document.getElementById("listingTable");
+				var row1 = table.insertRow(-1);
+				var cell1 = row1.insertCell(0);
+				var row2 = table.insertRow(-1);
+				var cell2 = row2.insertCell(0);
+				var row3 = table.insertRow(-1);
+				var cell3 = row3.insertCell(0);
+				var row4 = table.insertRow(-1);
+				var cell4 = row4.insertCell(0);
+				var row5 = table.insertRow(-1);
+				var cell5 = row5.insertCell(0);
+				var row6 = table.insertRow(-1);
+				var cell6 = row6.insertCell(0);
+				
+				var titleInput = document.createElement("INPUT");
+				titleInput.id = "title";
+				var descriptionInput = document.createElement("INPUT");
+				descriptionInput.id = "description";
+				var priceInput = document.createElement("INPUT");
+				priceInput.setAttribute("type", "number");
+				priceInput.setAttribute("min", "0");
+				priceInput.id = "price"
+				var imageInput = document.createElement("INPUT");
+				imageInput.setAttribute("type", "file");
+				imageInput.setAttribute("accept", "image/*");
+				imageInput.id = "image";
+				var tagInput = document.createElement("INPUT");
+				tagInput.id = "tag";
+				
+				var hiddenInput = document.createElement("INPUT");
+				hiddenInput.setAttribute("type", "hidden");
+				hiddenInput.id = "hiddenInput";
+			
+				var hiddenInput2 = document.createElement("INPUT");
+				hiddenInput2.setAttribute("type", "hidden");
+				hiddenInput2.id = "hiddenInput2";
+				hiddenInput2.value = getCurrentUser();
+				
+				imageInput.addEventListener('change', function() {
+						var file = this.files[0];
+						var reader = new FileReader();
+						reader.onload = function(e) {
+							hiddenInput.value = e.target.result;
+					    	}
+						reader.readAsDataURL(file);
+					}, false);
+				
+				
+				var button = document.createElement('BUTTON');
+				
+				
+				cell1.innerHTML = "Title: ";
+				cell1.appendChild(titleInput);
+				cell2.innerHTML = "Description: ";
+				cell2.appendChild(descriptionInput);
+				cell3.innerHTML = "Price: ";
+				cell3.appendChild(priceInput);
+				cell4.innerHTML = "Tags (Seperate with ,): ";
+				cell4.append(tagInput);
+				cell5.innerHTML = "Select image: ";
+				cell5.appendChild(imageInput);
+				cell5.append(hiddenInput);
+				cell5.append(hiddenInput2);
+				
+				button.onclick = function(){
+					var formData = new FormData();
+					formData.append("title",  document.getElementById("title").value);
+					formData.append("description",  document.getElementById("description").value);
+					formData.append("price",  document.getElementById("price").value);
+					formData.append("tags",  document.getElementById("tag").value);
+					formData.append("image",  document.getElementById("hiddenInput").value);
+					formData.append("email",  document.getElementById("hiddenInput2").value);
+					var xhr = new XMLHttpRequest();
+		        	xhr.open('POST', "/listing/create", true);
+		        	xhr.send(formData);
+		        	alert("Created Listing!");
+		        	window.location = "/listing?" + document.getElementById("title").value;
+				}
+				
+				var text = document.createTextNode("Create Listing");
+				button.appendChild(text);
+				button.className = "buttons";
+				cell6.appendChild(button);
+				
+			</script>
+		</table>
+	</div>
+</body>
+</html>

@@ -26,6 +26,7 @@
 						</div>
                         <div id = "logout" style="display: none">
                         	<a href="/profile"><button class = "buttons">Profile</button></a>
+                        	<a href="/cart"><button class = "buttons">Cart</button></a>
 	                        <form action="/logout" id="succ" method=post>
 	   							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							</form>
@@ -41,6 +42,6 @@
 				document.getElementById('logout').style.display= 'block';
 				document.getElementById('signup').style.display= 'none';
 			}
-	</script>
+		</script>
     </body>
 </html>

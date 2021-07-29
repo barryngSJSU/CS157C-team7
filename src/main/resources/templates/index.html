@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Museium</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="script.js"></script>
+    </head>
+<body class = "background">
+        <main>
+            <header>
+                <div class = "content-wrap">
+                    <h1 class ="Title">Museium</h1>
+                    <div class = "Buyer Login">
+                        <h2 class ="Buyer"></h2>
+                        <form action="/create">
+                            <button class ="buttons" >Create a listing</button>
+                        </form>
+                        <form action="/listings">
+                            <button class ="buttons">View listings</button>
+                        </form>
+                        <div id = "signup">
+							<a href="/login"><button class = "buttons">Sign in</button></a>
+							<a href="/signup"><button class = "buttons">Sign up</button></a>
+						</div>
+                        <div id = "logout" style="display: none">
+                        	<a href="/profile"><button class = "buttons">Profile</button></a>
+                        	<a href="/cart"><button class = "buttons">Cart</button></a>
+	                        <form action="/logout" id="succ" method=post>
+	   							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+							</form>
+							<button form = "succ" class = "buttons">Log out</button>
+						</div>
+                    </div>
+                </div>
+            </header>
+        </main>
+        <script>
+			var list = getCurrentUser();
+			if(list != "no user"){
+				document.getElementById('logout').style.display= 'block';
+				document.getElementById('signup').style.display= 'none';
+			}
+		</script>
+    </body>
+</html>

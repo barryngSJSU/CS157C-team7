@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script.js"></script>
+    <title>Listings</title>
+</head>
+<body class="Listing_Body">
+<div class="sidenav">
+	<a href="/">Homepage</a>
+	<br>
+	<a href="/create">Create</a>
+	<br>
+	<a href="/listings?">Listings</a>
+	<br>
+	<a href="/cart">Cart</a>
+	<br>
+	<div id = "signup">
+		<a href="/login">Sign in</a>
+		<br>
+		<a href="/signup">Sign up</a>
+	</div>
+	<div id = "logout" style="display: none">		
+		<a href="/profile" class="account">Profile</a>
+		<br>
+		<a href="/logout" form = "succ" class="account">Log out</a>
+	</div>
+	<script>
+	var list = getCurrentUser();
+	if(list != "no user"){
+		document.getElementById('logout').style.display= 'block';
+		document.getElementById('signup').style.display= 'none';
+	}
+	</script>
+</div>
+<section class="product">
+<div class="p-heading">
+	<h1>Listing</h1>
+</div>
+<div class = "product-container">
+	<table id ="listingsTable">
+		<script>
+			
+			var title = window.location.href.substring(window.location.href.indexOf("?") + 1)
+			title = title.replaceAll("%20", " ");
+			var table = document.getElementById("listingsTable");
+			var listing = getListing(title);
+			var seller = getFullName(listing.Email);
+			var tags = getTags(title);
+				
+			var row = table.insertRow(-1);
+			var cell = row.insertCell(0);
+			var row2 = table.insertRow(-1);
+			var cell2 = row2.insertCell(0);
+			var row3 = table.insertRow(-1);
+			var cell3 = row3.insertCell(0);
+			var row4 = table.insertRow(-1);
+			var cell4 = row4.insertCell(0);
+			var row5 = table.insertRow(-1);
+			var cell5 = row5.insertCell(0);
+			var row6 = table.insertRow(-1);
+			var cell6 = row6.insertCell(0);
+			var row7 = table.insertRow(-1);
+			var cell7 = row7.insertCell(0);
+			
+				
+			cell.innerHTML = "Title: " + title;
+			cell2.innerHTML = "Description: " + listing.Description;
+			cell3.innerHTML = "Price: $" + listing.Price;
+			var image = new Image();
+			image.src = listing.Image;
+			cell4.appendChild(image);
+			cell5.innerHTML = "Tags: " + tags;
+			cell6.innerHTML = "Seller: " + seller;
+			cell7.innerHTML = "Rating: " + getSeller(listing.Email).Rating;
+			if (getCurrentUser() != "no user" && getCurrentUser() == listing.Email){
+				var cell8 = table.insertRow(-1);
+				var button = document.createElement('BUTTON');
+				button.onclick = function (){
+					const http = new XMLHttpRequest();
+					http.open("DELETE", "/listing/delete" + title, false);
+					http.send();
+					alert("Deleted Listing");
+					window.location = "/listings?";
+				}
+				var text = document.createTextNode("Delete Listing");
+				button.appendChild(text);
+				button.className = "buttons";
+				cell8.appendChild(button);
+			}
+		</script>
+	</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<div class="wrapper fadeInDown">
+<head>
+    <title>Sign Up</title>
+    <link href="css/style.css" rel="stylesheet">
+	<script src="script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body class = "Seller_Login_Page">
+<main>
+  <!-- Title for page-->
+  <div class = "content">
+  <header>
+    <div class = "content-wrap">
+    </div>
+  </header>
+     <div id="formContent">
+        <div>
+        	<a href="/">Homepage </a>
+            <h1>Sign Up</h1>
+        </div>
+        <div th:if="${param.error}">
+        Invalid Email.
+    	</div>
+        <form th:action="@{/register}" th:object="${customer}" method="post">
+            <input type="text" id="email" th:field="*{email}" name="email" placeholder="Email" required />
+            <input type="password" id="password" th:field="*{password}" name="password" placeholder="Password" required minlength="6" maxlength="10"/>
+            <input type="text" id="firstName" th:field="*{firstName}" name="firstName" placeholder="First Name" required />
+            <input type="text" id="lastName" th:field="*{lastName}" name="lastName" placeholder="Last Name" required />
+            <input type="text" id="phone" th:field="*{phone}" name="phone" placeholder="Phone Number" required />
+            <input type="text" id="address" th:field="*{address}" name="address" placeholder="Address" required />
+            <input type="submit" id="submit" value="Sign Up">
+        </form>
+    </div>
+    </div>
+</main>
+</body>
+</div>
+</html>

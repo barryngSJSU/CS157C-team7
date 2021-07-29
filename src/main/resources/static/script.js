@@ -79,3 +79,21 @@ function getReview(title){
 	}
 }
 
+function getCart(email){
+	const http = new XMLHttpRequest();
+	http.open("GET", "/cart"+ email, false);
+	http.send();
+	if(http.status == 200){
+		return JSON.parse(http.responseText);
+	}
+}
+
+function getPurchases(){
+	const http = new XMLHttpRequest();
+	http.open("GET", "/purchases", false);
+	http.send();
+	if(http.status == 200){
+		return JSON.parse(http.responseText);
+	}
+}
+

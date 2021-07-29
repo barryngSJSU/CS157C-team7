@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script.js"></script>
+    <title>Listings</title>
+</head>
+<body class="Listing_Body">
+<div class="sidenav">
+	<a href="/">Homepage</a>
+	<br>
+	<a href="/create">Create</a>
+	<br>
+	<a href="/listings?">Listings</a>
+	<br>
+	<a href="/cart">Cart</a>
+	<br>
+	<div id = "signup">
+		<a href="/login">Sign in</a>
+		<br>
+		<a href="/signup">Sign up</a>
+	</div>
+	<div id = "logout" style="display: none">		
+		<a href="/profile" class="account">Profile</a>
+		<br>
+		<a href="/logout" form = "succ" class="account">Log out</a>
+	</div>
+	<script>
+	var list = getCurrentUser();
+	if(list != "no user"){
+		document.getElementById('logout').style.display= 'block';
+		document.getElementById('signup').style.display= 'none';
+	}
+	</script>
+</div>
+<section class="product">
+<div class="p-heading">
+	<h1>Profile</h1>
+</div>
+<div class = "product-container">
+	<table id ="profileTable">
+		<script>
+			var user = getCurrentUser();
+			var userData = getSeller(user);
+			var table = document.getElementById("profileTable");
+				
+			var row = table.insertRow(-1);
+			var row2 = table.insertRow(-1);
+			var row3 = table.insertRow(-1);
+			var row4 = table.insertRow(-1);
+			var row5 = table.insertRow(-1);
+			var row6 = table.insertRow(-1);
+			var row7 = table.insertRow(-1);
+			var row8 = table.insertRow(-1);
+				
+			row.innerHTML = "User: " + userData.firstName + " " +  userData.lastName;
+			row2.innerHTML = "Email: " + userData.email;
+			row3.innerHTML = "Address: " + userData.address;
+			row4.innerHTML = "Rating: " + userData.Rating;
+			row5.innerHTML = "&#8203";
+			
+			var purchases = getPurchases();
+			if (purchases.length != 0){
+				row6.innerHTML = "Previous Purchases";
+				var th = document.createElement("TH");
+				th.innerHTML = "Title";
+				var th2 = document.createElement("TH");
+				th2.innerHTML = "Description";
+				var th3 = document.createElement("TH");
+				th3.innerHTML = "Price";
+				var th4 = document.createElement("TH");
+				th4.innerHTML = "Image";
+				var th5 = document.createElement("TH");
+				th5.innerHTML = "Seller";
+				var th6 = document.createElement("TH");
+				th6.innerHTML = "Rating";
+				var thcell = row7.insertCell(-1);
+				var thcell2 = row7.insertCell(-1);
+				var thcell3 = row7.insertCell(-1);
+				var thcell4 = row7.insertCell(-1);
+				var thcell5 = row7.insertCell(-1);
+				var thcell6 = row7.insertCell(-1);
+				thcell.appendChild(th);
+				thcell2.appendChild(th2);
+				thcell3.appendChild(th3);
+				thcell4.appendChild(th4);
+				thcell5.appendChild(th5);
+				thcell6.appendChild(th6);
+				for (let i = 0; i < purchases.length; i++){
+					const title = purchases[i];
+					var listing = getListing(title);
+					var seller = getFullName(listing.Email);
+					
+					var row = table.insertRow(-1);
+					var cell1 = row.insertCell(-1);
+					var cell2 = row.insertCell(-1);
+					var cell3 = row.insertCell(-1);
+					var cell4 = row.insertCell(-1);
+					var cell5 = row.insertCell(-1);
+					var cell6 = row.insertCell(-1);
+					
+					cell1.innerHTML = '<a href="/listing?'+ title +'" style="color:#ffffff">'+title+'</a>';
+					cell2.innerHTML = listing.Description;
+					cell3.innerHTML = "$" + listing.Price;
+					var image = new Image(200);
+					image.src = listing.Image;
+					cell4.appendChild(image);
+					cell5.innerHTML = '<a href="/seller?'+ listing.Email +'" style="color:#ffffff">'+seller+'</a>';
+					cell6.innerHTML = getSeller(listing.Email).Rating;
+					
+				}
+			}
+		</script>
+	</table>
+</div>
+</body>
+</html>

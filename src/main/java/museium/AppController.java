@@ -14,6 +14,11 @@ import redis.clients.jedis.Jedis;
 public class AppController {
 	private Jedis jedis = new Jedis("localhost");
 	
+	
+	@RequestMapping("/")
+    public String indexPage() {
+        return "index";
+    }
     @RequestMapping("/create")
     public String createPage() {
         return "createlisting";
@@ -45,6 +50,11 @@ public class AppController {
     	return "seller";
     }
     
+    @RequestMapping("/cart")
+    public String cartPage() {
+    	return "cart";
+    }
+    
     @PostMapping("/register")
     public String processRegister(Customer user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -57,6 +67,6 @@ public class AppController {
         jedis.hset(user.getEmail(), "address", user.getAddress());
         jedis.hset(user.getEmail(), "phone", user.getPhone());
         jedis.save();
-        return "/";
+        return "login";
     }
 }
