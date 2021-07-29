@@ -393,30 +393,18 @@ transition: 0.1s ease;
 	padding:40px 20px;
 	margin-top: -60px;
 	position: relative;
-/*	background-image: url("../images/ProductBG.jpg");*/
-background-color: #2B333D;
+  background-color: #2B333D;
 	background-size:1000px;
 	background-position: center;
 	border-radius: 10px;
   color: white;
  
 }
-.p-heading{
-	margin:20px;
-	text-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+
+th,td {
+	border-bottom: 1px solid whitesmoke;
 }
-.p-heading h3{
-	font-family: myriad pro;
-	font-weight: 700;
-	letter-spacing: 2px;
-	text-align: center;
-	font-size:2rem;
-	color:#323543;
- 
-}
-.p-heading h3 font{
-	color:#8c84f9;
-}
+
 .product-container{
 	display: flex;
 	justify-content: center;
@@ -424,60 +412,6 @@ background-color: #2B333D;
 	flex-wrap: wrap;
 	margin: 10px 0px;
 	width:100%;
-}
-.p-box{
-	width:250px;
-	height: 330px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	border-radius: 4px;
-	position: relative;
-	margin: 10px 30px;
-
-}
-.p-box img{
-	height:180px;
-}
-.p-box p{
-	color:white;
-	font-family: myriad pro;
-	font-size: 0.9rem;
-	letter-spacing: 0.5;
-}
-.price{
-	color:steelblue;
-	font-family: poppins;
-	font-size: 1rem;;
-}
-.buy-btn{
-	background-color: white; 
-  border: 2px solid grey;
-  color: black;
-  padding: 15px 50px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 12px;
-}
-.buy-btn:hover {
-  background-color: #5cb85c; 
-  color: white;
-}
-.p-box:hover .buy-btn{
-	display: flex;
-}
-.p-box:hover{
-	box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
-  background-color: #2e4158;
-}
-.p-box:hover .price{
-	color:#16a085;
-	transition: all ease 0.2s;
-  font-size: large;
-  font-weight: bolder;
 }
 
 .checkoutbtn{
