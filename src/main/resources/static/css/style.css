@@ -1,0 +1,510 @@
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  .logoutLblPos{
+    position:fixed;
+    right:10px;
+    top:5px;
+ }
+
+
+/* Seller Sign up
+--------------------------------------*/
+.Seller_Sign_up_Page{
+    background-image: url();
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+  
+}
+.content{
+  max-width: 500px;
+  margin: auto;
+}
+#login-box {
+  position: relative;
+  margin: 5% auto;
+  width: 600px;
+  height: 400px;
+  background: #FFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+input[type="text"],
+input[type="email"]
+ {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 220px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #AAA;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+input[type="date"],
+input[type="password"]
+ {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 220px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #AAA;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-bottom: 2px solid #16a085;
+  color: #2C98BC;
+  transition: 0.2s ease;
+}
+
+input[type="date"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid #16a085;
+  color: #2C98BC;
+  transition: 0.2s ease;
+}
+
+input[type="submit"] {
+  margin-top: 28px;
+  width: 120px;
+  height: 32px;
+  background: #2C98BC;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+.registerbtn{
+  background-color: white; 
+  border: 2px solid grey;
+  color: black;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.registerbtn:hover {
+  background-color: #2C98BC; 
+  color: white;
+}
+
+/* Seller Login
+--------------------------------------*/
+.Seller_Sign_up_Page{
+  background-image: url(../Images/Seller_Login.jpg);
+
+}
+.Seller_Login_Page{
+  background-image: url(../Images/Seller_Signup.jpg);
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+
+}
+.Buyer_Login_Page{
+  background-image: url(../Images/BuyerLogin.jpg);
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+.Buyer_Sign_up_Page{
+  background-image: url(../Images/Buyersignup.jpg);
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+.login-box{
+  color: whitesmoke;
+}
+.content-wrap{
+  color: whitesmoke;
+}
+
+.content{
+max-width: 500px;
+margin: auto;
+}
+#login-box {
+position: relative;
+margin: 5% auto;
+width: 600px;
+height: 400px;
+background: #FFF;
+border-radius: 2px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+input[type="text"],
+input[type="email"]
+{
+display: block;
+box-sizing: border-box;
+margin-bottom: 20px;
+padding: 4px;
+width: 220px;
+height: 32px;
+border: none;
+border-bottom: 1px solid #AAA;
+font-family: 'Roboto', sans-serif;
+font-weight: 400;
+font-size: 15px;
+transition: 0.2s ease;
+}
+
+input[type="date"],
+input[type="password"]
+{
+display: block;
+box-sizing: border-box;
+margin-bottom: 20px;
+padding: 4px;
+width: 220px;
+height: 32px;
+border: none;
+border-bottom: 1px solid #AAA;
+font-family: 'Roboto', sans-serif;
+font-weight: 400;
+font-size: 15px;
+transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+border-bottom: 2px solid #14492B;
+color: #14492B;
+transition: 0.2s ease;
+}
+
+input[type="submit"] {
+margin-top: 28px;
+width: 120px;
+height: 32px;
+background: #14492B;
+border: none;
+border-radius: 2px;
+color: #FFF;
+font-family: 'Roboto', sans-serif;
+font-weight: 500;
+text-transform: uppercase;
+transition: 0.1s ease;
+cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+opacity: 0.8;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+opacity: 1;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+transition: 0.1s ease;
+}
+
+.loginbtn{
+  background-color: white; 
+  border: 2px solid #14492B;
+  color: black;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.loginbtn:hover {
+  background-color: orangered; 
+  color: white;
+}
+
+
+.buyerloginbtn{
+  background-color: white; 
+  border: 2px solid #14492B;
+  color: black;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.buyerloginbtn:hover {
+  background-color: #FFD79D; 
+  color: white;
+}
+
+/* Landing Page
+--------------------------------------*/
+.background{
+  background-image: url(../Images/LandingPage_Wallpaper.jpg);
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+.Title {
+  color: aliceblue;
+  align-content: center;
+}
+.content-wrap{
+  max-width: 200px;
+  margin: auto;
+  padding-top: 15%;
+}
+
+.Brand{
+  color: #AAA;
+}
+
+.buttons{
+  background-color: white; 
+  border: 2px solid grey;
+  color: black;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.buttons:hover {
+  background-color: #60828B; 
+  color: white;
+}
+
+/* Seller Landing Page
+--------------------------------------*/
+.viewbtn{
+  background-color: white; 
+  border: 2px solid grey;
+  color: black;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.viewbtn:hover {
+  background-color: #5bc0de; 
+  color: white;
+}
+
+.createbtn{
+  background-color: white; 
+  border: 2px solid grey;
+  color: black;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.createbtn:hover {
+  background-color: #5cb85c; 
+  color: white;
+}
+
+/* Seller Dashboard
+--------------------------------------*/
+.sellerbtns{
+  max-width: 200px;
+  margin: auto;
+  padding-top: 15%;
+}
+
+.Seller_Dash{
+  background-image: url(../Images/Seller_Dash.jpg);
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+
+}
+
+/* Create Listing
+--------------------------------------*/
+.Create_Listing{
+  background-image: url(../Images/Create_Listing.jpg);
+}
+.title_descrip{
+  color: antiquewhite;
+}
+
+/* Listings
+--------------------------------------*/
+.Listing_Body{
+  background-image: url("../Images/ListingBG.jpg");
+}
+.product{
+	width: 85%;
+	box-shadow: 2px 2px 30px rgba(167, 158, 245, 0.2);
+	display: flex;
+	margin:30px auto;
+	flex-direction: column;
+	align-items: center;
+	padding:40px 20px;
+	margin-top: -60px;
+	position: relative;
+/*	background-image: url("../images/ProductBG.jpg");*/
+background-color: #2B333D;
+	background-size:1000px;
+	background-position: center;
+	border-radius: 10px;
+  color: white;
+ 
+}
+.p-heading{
+	margin:20px;
+	text-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+}
+.p-heading h3{
+	font-family: myriad pro;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-align: center;
+	font-size:2rem;
+	color:#323543;
+ 
+}
+.p-heading h3 font{
+	color:#8c84f9;
+}
+.product-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 10px 0px;
+	width:100%;
+}
+.p-box{
+	width:250px;
+	height: 330px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border-radius: 4px;
+	position: relative;
+	margin: 10px 30px;
+
+}
+.p-box img{
+	height:180px;
+}
+.p-box p{
+	color:white;
+	font-family: myriad pro;
+	font-size: 0.9rem;
+	letter-spacing: 0.5;
+}
+.price{
+	color:steelblue;
+	font-family: poppins;
+	font-size: 1rem;;
+}
+.buy-btn{
+	background-color: white; 
+  border: 2px solid grey;
+  color: black;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+.buy-btn:hover {
+  background-color: #5cb85c; 
+  color: white;
+}
+.p-box:hover .buy-btn{
+	display: flex;
+}
+.p-box:hover{
+	box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+  background-color: #2e4158;
+}
+.p-box:hover .price{
+	color:#16a085;
+	transition: all ease 0.2s;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.checkoutbtn{
+  background-color: white; 
+  border: 2px solid grey;
+  color: black;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.checkoutbtn:hover {
+  background-color: #6DC2A0; 
+  color: white;
+}
+/* Checkout
+--------------------------------------*/
+.container {
+  background-color: #FFFFFF;
+  padding: 3px 18px 13px 18px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  box-shadow: 0 0 2rem 0 rgba(168, 180, 194, 0.37);
+}
+
+
+
