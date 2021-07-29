@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Listing</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class = "Create_Listing">
+    <main>
+        <!-- Title for page-->
+        <div class = "content">
+        <header>
+            <div class = "content-wrap">
+                <h1>Create Listing!</h1>
+                <p class="title_descrip">Please fill out the form to create a listing.</p>
+            </div>
+        </header>
+        <!-- User input Form -->
+        <form action=".java" method="POST" class = "form">
+            <div class = "login-box">
+                <label for ="Title"><b>Title</b></label>
+                <input type="text" placeholder = "Enter Title..." name ="title" id= "title" required>
+                <br>
+                    
+                <label input for="Details"><b>Details</b></label>
+                <input type="text" placeholder="Enter Description..." name = "Details" id="Details" required>
+                <br>
+
+                <label input for="price"><b>Price</b></label>
+                <input type ="textarea" placeholder="Enter Price..." name="price" id="price" required>
+                <br>
+
+                <label for="img">Select image:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <br>
+
+                <p>***By creating a listing you agree to our Terms & Privacy.***</p>        
+                
+                <input type ="submit" class = "createListingBtn"></input>            
+            </div>
+        </form>
+    </div>
+    </main>
+</body>
+</html>
